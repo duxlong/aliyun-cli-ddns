@@ -2,14 +2,11 @@
 
 # 使用 aliyun-cli 修改域名解析记录
 ddns(){
-
-    domain=$DOMAIN
-
     # 分割字符串
-    rr=`echo $domain | cut -d. -f1`
+    rr=`echo $DOMAIN | cut -d. -f1`
 
     # 获取子域名的解析记录
-    records=$(aliyun alidns DescribeSubDomainRecords --SubDomain $domain)
+    records=$(aliyun alidns DescribeSubDomainRecords --SubDomain $DOMAIN)
 
     # 查看解析记录的数量
     count=`echo $records | jq -r '.TotalCount'`
@@ -17,7 +14,7 @@ ddns(){
     if [ $count -eq 0 ]
     then
         echo "添加解析记录ing..."
-        name=$(echo `echo $domain | cut -d. -f2`.`echo $domain | cut -d. -f3`)
+        name=$(echo `echo $DOMAIN | cut -d. -f2`.`echo $DOMAIN | cut -d. -f3`)
         aliyun alidns AddDomainRecord --DomainName $name --RR $rr --Type A --Value $ip
         echo "添加解析记录完成"
     else
@@ -27,9 +24,8 @@ ddns(){
         echo "修改解析记录完成"
     fi
 
-    # 记录阿里云解析的 IP
+    # 记录阿里云解析的 IP，判断是否成功修改域名解析
     echo $ip > ./aliyunIP.txt
-
 }
 
 #################### main ####################
