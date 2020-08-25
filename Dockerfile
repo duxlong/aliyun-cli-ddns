@@ -8,6 +8,8 @@ ENV REGION="[GEGION]" AKI="[AKI]" AKS="[AKC]" DOMAIN="[DOMAIN]"
 # tzdata : 设置时区
 RUN apk update && \
     apk add --no-cache bash curl jq tzdata && \
+    echo "${TZ}" > /etc/timezone && \
+    ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime && \
     cd /tmp && \
     curl -LJO https://github.com/aliyun/aliyun-cli/releases/download/v3.0.56/aliyun-cli-linux-3.0.56-amd64.tgz && \
     tar -zxvf aliyun-cli-linux-3.0.56-amd64.tgz && \
