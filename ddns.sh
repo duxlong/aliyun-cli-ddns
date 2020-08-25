@@ -17,6 +17,9 @@ ddns(){
     if [ $count -eq 0 ]
     then
         echo "添加解析记录ing..."
+        name=$(echo `echo $domain | cut -d. -f2`.`echo $domain | cut -d. -f3`)
+        aliyun alidns AddDomainRecord --DomainName $name --RR $rr --Type A --Value $ip
+        echo "添加解析记录完成"
     else
         echo "修改解析记录ing..."
         id=`echo $records | jq -r '.DomainRecords.Record | .[-1].RecordId'`
