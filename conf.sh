@@ -8,8 +8,5 @@ aliyun configure set \
   --access-key-id $AKI \
   --access-key-secret $AKS
 
-# 设置 crontab
-echo "*/5 * * * * /bin/bash /root/ddns.sh" > /var/spool/cron/crontabs/root
-
 # 必须 -f 前台运行
 crond -f
