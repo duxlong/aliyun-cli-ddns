@@ -13,9 +13,7 @@ RUN apk update && \
     curl https://raw.githubusercontent.com/duxlong/aliyun-cli-ddns/master/ddns.sh > /root/ddns.sh && \
     chmod +x /root/conf.sh && \
     chmod +x /root/ddns.sh && \
-    
     touch /root/aliyunIP.txt && \
-     \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
