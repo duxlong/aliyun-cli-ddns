@@ -3,7 +3,7 @@
 # 使用 aliyun-cli 修改域名解析记录
 ddns(){
 
-    domain=$1
+    domain=$DOMAIN
 
     # 分割字符串
     rr=`echo $domain | cut -d. -f1`
