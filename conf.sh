@@ -1,5 +1,6 @@
 #!/bin/bash
 
+region="cn-hangzhou"
 id="LTAI4FwY3oZFyD6DiCBA5tB4"
 secret="nJ4d9kkpSCykajzbkbkekflRn1jWy5"
 
@@ -7,6 +8,6 @@ secret="nJ4d9kkpSCykajzbkbkekflRn1jWy5"
 aliyun configure set \
   --profile akProfile \
   --mode AK \
-  --region cn-hangzhou \
+  --region $region \
   --access-key-id $id \
   --access-key-secret $secret
