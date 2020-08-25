@@ -13,13 +13,16 @@ RUN apk update && \
     curl https://raw.githubusercontent.com/duxlong/aliyun-cli-ddns/master/ddns.sh > /root/ddns.sh && \
     chmod +x /root/conf.sh && \
     chmod +x /root/ddns.sh && \
-    /bin/bash /root/conf.sh $REGION $AKI $AKS && \
+    
     touch /root/aliyunIP.txt && \
-    echo "*/5 * * * * /bin/bash /root/ddns.sh $DOMAIN" > /var/spool/cron/crontabs/root && \
+     \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
 WORKDIR /root
+
+# docker run 之后写入变量
+CMD /bin/bash /root/conf.sh $REGION $AKI $AKS && echo "*/5 * * * * /bin/bash /root/ddns.sh $DOMAIN" > /var/spool/cron/crontabs/root
 
 # 必须 -f 前台运行
 CMD crond -f
