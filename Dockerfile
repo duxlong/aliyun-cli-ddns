@@ -19,8 +19,4 @@ RUN apk update && \
 
 WORKDIR /root
 
-# docker run 之后写入变量
-ENTRYPOINT /root/conf.sh $REGION $AKI $AKS && echo "*/5 * * * * /bin/bash /root/ddns.sh $DOMAIN" > /var/spool/cron/crontabs/root
-
-# 必须 -f 前台运行
-CMD crond -f
+CMD /bin/bash ./conf.sh
