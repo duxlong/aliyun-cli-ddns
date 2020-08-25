@@ -32,7 +32,7 @@ ddns(){
 #################### main ####################
 
 # 获取公网 ip
-ip=`curl ip.cip.cc`
+ip=`curl -s ip.cip.cc`
 
 # 读取 aliyunIP.txt（上一次登陆阿里云修改的解析记录）
 aliyunIP=`cat ./aliyunIP.txt`
