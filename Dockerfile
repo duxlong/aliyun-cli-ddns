@@ -1,6 +1,6 @@
 FROM alpine
 
-ENV REGION="[GEGION]" AKI="[AKI]" AKS="[AKC]" DOMAIN="[DOMAIN]"
+ENV REGION="cn-hangzhou" AKI="[AKI]" AKS="[AKC]" DOMAIN="[DOMAIN]"
 
 # jq : 解析 JSON
 RUN apk update && \
