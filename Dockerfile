@@ -20,4 +20,4 @@ RUN apk update && \
 
 WORKDIR /root
 
-CMD /bin/bash ./conf.sh $REGION $AKI $AKS $DOMAIN
+CMD /bin/bash ./conf.sh
