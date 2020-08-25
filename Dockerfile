@@ -14,6 +14,7 @@ RUN apk update && \
     chmod +x /root/conf.sh && \
     chmod +x /root/ddns.sh && \
     touch /root/aliyunIP.txt && \
+    echo "*/5 * * * * /bin/bash /root/ddns.sh" > /var/spool/cron/crontabs/root && \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
