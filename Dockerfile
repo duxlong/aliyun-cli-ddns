@@ -18,5 +18,5 @@ RUN apk update && \
 
 WORKDIR /root
 
-# -f 前台运行
+# 必须 -f 前台运行
 CMD crond -f
