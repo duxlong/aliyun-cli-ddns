@@ -2,6 +2,8 @@ FROM alpine
 
 ARG TZ=Asia/Shanghai
 
+ENV REGION="[GEGION]" AKI="[AKI]" AKS="[AKC]" DOMAIN="[DOMAIN]"
+
 # jq : 解析 JSON
 # tzdata : 设置时区
 RUN apk update && \
@@ -14,9 +16,9 @@ RUN apk update && \
     curl https://raw.githubusercontent.com/duxlong/aliyun-cli-ddns/master/ddns.sh > /root/ddns.sh && \
     chmod +x /root/conf.sh && \
     chmod +x /root/ddns.sh && \
-    /bin/bash /root/conf.sh && \
+    /bin/bash /root/conf.sh $REGION $AKI $AKS && \
     touch /root/aliyunIP.txt && \
-    echo "*/5 * * * * /bin/bash /root/ddns.sh" > /etc/crontabs/root && \
+    echo "*/5 * * * * /bin/bash /root/ddns.sh $DOMAIN" > /etc/crontabs/root && \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
