@@ -12,10 +12,11 @@ RUN apk update && \
     chmod +x /root/conf.sh && \
     chmod +x /root/ddns.sh && \
     /bin/bash /root/conf.sh && \
-    echo "* */10 * * * /bin/bash /root/ddns.sh" > /etc/crontabs/root && \
+    echo "*/5 * * * * /bin/bash /root/ddns.sh" > /etc/crontabs/root && \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
 WORKDIR /root
 
-CMD crond
+# -f 前台运行
+CMD crond -f
