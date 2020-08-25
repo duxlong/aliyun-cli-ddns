@@ -3,7 +3,7 @@
 # 使用 aliyun-cli 修改域名解析记录
 ddns(){
 
-    domain="nas.1314250.xyz"
+    domain=$1
 
     # 分割字符串
     rr=`echo $domain | cut -d. -f1`
