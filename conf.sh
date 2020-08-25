@@ -1,8 +1,8 @@
 #!/bin/bash
 
-REGION="[REGION]"
-AKI="[AKI]"
-AKS="[AKS]"
+REGION=$1
+AKI=$2
+AKS=$3
 
 # 设置 aliyun-cli 登陆信息
 aliyun configure set \
