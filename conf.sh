@@ -11,3 +11,11 @@ aliyun configure set \
   --region $REGION \
   --access-key-id $AKI \
   --access-key-secret $AKS
+
+DOMAIN=$4
+
+# 设置 crontab
+echo "*/5 * * * * /bin/bash /root/ddns.sh $DOMAIN" > /var/spool/cron/crontabs/root
+
+# 必须 -f 前台运行
+crond -f
