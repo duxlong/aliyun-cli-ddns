@@ -13,11 +13,11 @@ RUN apk update && \
     curl https://raw.githubusercontent.com/duxlong/aliyun-cli-ddns/master/ddns.sh > /root/ddns.sh && \
     chmod +x /root/conf.sh && \
     chmod +x /root/ddns.sh && \
-    touch /root/aliyunIP.txt && \
     echo "*/5 * * * * /bin/bash /root/ddns.sh" > /var/spool/cron/crontabs/root && \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
 WORKDIR /root
 
-CMD /bin/bash ./conf.sh
+# 必须 -f 前台运行
+CMD crond -f
