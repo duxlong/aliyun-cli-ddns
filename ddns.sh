@@ -12,7 +12,7 @@ login(){
         --access-key-secret $AKS
 }
 
-# 使用 aliyun-cli 修改域名解析记录
+# 使用 aliyun-cli 添加或修改域名解析记录
 ddns(){
     # 获取子域名的解析记录
     records=$(aliyun alidns DescribeSubDomainRecords --SubDomain $DOMAIN)
