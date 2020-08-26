@@ -16,15 +16,32 @@ ddns(){
         echo "添加解析记录ing..."
         name=$(echo `echo $DOMAIN | cut -d. -f2`.`echo $DOMAIN | cut -d. -f3`)
         aliyun alidns AddDomainRecord --DomainName $name --RR $rr --Type A --Value $ip
-        echo "添加解析记录完成"
+        if [ $? -eq 0 ]
+        then
+            echo "添加解析记录完成！"
+            saveIP
+        else
+            echo "添加解析记录失败！"
+        fi
+        
     else
         echo "修改解析记录ing..."
         id=`echo $records | jq -r '.DomainRecords.Record | .[-1].RecordId'`
         aliyun alidns UpdateDomainRecord --RecordId $id --RR $rr --Type A --Value $ip
-        echo "修改解析记录完成"
+        if [ $? -eq 0 ]
+        then
+            echo "修改解析记录完成！"
+            saveIP
+        else
+            echo "修改解析记录失败！"
+        fi
     fi
 
-    # 记录阿里云解析的 IP，判断是否成功修改域名解析
+
+}
+
+# 记录阿里云解析的 IP，判断是否成功修改域名解析
+saveIP(){
     echo $ip > ./aliyunIP.txt
 }
 
@@ -38,8 +55,8 @@ aliyunIP=`cat ./aliyunIP.txt`
 
 if [ $ip = $aliyunIP ]
 then
-    echo "IP 未改变"
+    echo "公网 IP 未改变！"
 else
-    echo "IP 已改变"
+    echo "公网 IP 已改变！"
     ddns
 fi
