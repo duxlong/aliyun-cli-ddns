@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# 登陆 aliyun-cli
+login(){
+    aliyun configure set \
+        --profile akProfile \
+        --mode AK \
+        --region $REGION \
+        --access-key-id $AKI \
+        --access-key-secret $AKS
+}
+
 # 使用 aliyun-cli 修改域名解析记录
 ddns(){
     # 分割字符串
@@ -46,6 +56,13 @@ saveIP(){
 }
 
 #################### main ####################
+
+# 第一次运行，创建文件并登陆
+if [ ! -f ./aliyunIP.txt ]
+then
+    touch ./aliyunIP.txt
+    login
+fi
 
 # 获取公网 ip
 ip=`curl -s ip.cip.cc`
