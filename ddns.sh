@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#################### func ####################
+
 # 登陆 aliyun-cli
 login(){
     aliyun configure set \
