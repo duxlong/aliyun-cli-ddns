@@ -1,6 +1,6 @@
 # aliyun-cli-ddns
 
-# why？
+# why build this
 
 接连几天，我访问工商公示平台网站，总是提示我网络不安全，不允许我访问，重新拨号换 IP 后才能正常使用；
 
