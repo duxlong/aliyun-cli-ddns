@@ -30,7 +30,7 @@ docker pull duxlong/aliyun-cli-ddns:latest
 ```
 
 docker run
-```sh
+```
 docker run -d \
     -e "REGION="cn-hangzhou" \
     -e "AKI=[aliyun access-key-id]" \
@@ -38,3 +38,4 @@ docker run -d \
     -e "DOMAIN=[ddns domain]" \
     duxlong/aliyun-cli-ddns
 ```
+ps.替换自己的数据
