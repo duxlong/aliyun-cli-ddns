@@ -33,9 +33,8 @@ docker run
 ```
 docker run -d \
     -e "REGION="cn-hangzhou" \
-    -e "AKI=[aliyun access-key-id]" \
-    -e "AKS=[aliyun access-key-secret]" \
-    -e "DOMAIN=[ddns domain]" \
+    -e "AKI=[your aliyun access-key-id]" \
+    -e "AKS=[your aliyun access-key-secret]" \
+    -e "DOMAIN=[your ddns domain]" \
     duxlong/aliyun-cli-ddns
 ```
-ps.替换自己的数据
