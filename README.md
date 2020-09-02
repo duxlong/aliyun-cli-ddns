@@ -36,5 +36,6 @@ docker run -d \
     -e "AKI=[your aliyun access-key-id]" \
     -e "AKS=[your aliyun access-key-secret]" \
     -e "DOMAIN=[your ddns domain]" \
+    --name="aliyun-cli-ddns" \
     duxlong/aliyun-cli-ddns
 ```
