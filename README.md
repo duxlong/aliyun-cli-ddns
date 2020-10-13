@@ -32,10 +32,10 @@ docker pull duxlong/aliyun-cli-ddns:latest
 docker run
 ```
 docker run -d \
-    -e "REGION=cn-hangzhou" \
-    -e "AKI=[your aliyun access-key-id]" \
-    -e "AKS=[your aliyun access-key-secret]" \
-    -e "DOMAIN=[your ddns domain]" \
+    -e REGION="cn-hangzhou" \
+    -e AKI="[your aliyun access-key-id]" \
+    -e AKS="[your aliyun access-key-secret]" \
+    -e DOMAIN="[your ddns domain]" \
     --name="aliyun-cli-ddns" \
     duxlong/aliyun-cli-ddns
 ```
