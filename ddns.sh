@@ -70,14 +70,24 @@ then
     echo $dnsip > ./dnsip.txt
 fi
 
-ip=`curl -s ip.cip.cc`
+# 有时候 `curl -s ip.cip.cc` 运行失败，无法获得 $ip
+# 当 $ip 有值，则跳出循环
+while [ ! $ip ]
+do
+    ip=`curl -s ip.cip.cc`
+    if [ ! $ip ]
+    then
+        echo "获取 ip 失败，10 秒后重试..."
+        sleep 10
+    fi
+done
 
 dnsip=`cat ./dnsip.txt`
 
 if [ $ip = $dnsip ]
 then
-    echo "公网 IP 未改变！"
+    echo "$(date) 公网 IP 未改变！"
 else
-    echo "公网 IP 已改变！"
+    echo "$(date) 公网 IP 已改变！"
     ddns
 fi
