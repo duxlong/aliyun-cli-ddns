@@ -77,7 +77,7 @@ do
     ip=`curl -s ip.cip.cc`
     if [ ! $ip ]
     then
-        echo "获取 ip 失败，10 秒后重试..."
+        echo "$(date) ip.cip.cc error , try again 10 seconds latter..."
         sleep 10
     fi
 done
