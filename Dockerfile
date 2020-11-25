@@ -2,8 +2,6 @@ FROM alpine
 
 ENV REGION="cn-hangzhou" AKI="[AKI]" AKS="[AKC]" DOMAIN="[DOMAIN]"
 
-WORKDIR /root
-
 # jq : 解析 JSON
 RUN apk update && \
     apk add --no-cache bash curl jq && \
@@ -17,7 +15,7 @@ RUN apk update && \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
-
+WORKDIR /root
 
 # 必须 -f 前台运行
 CMD crond -f
