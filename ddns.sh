@@ -74,10 +74,10 @@ fi
 # 当 $ip 有值，则跳出循环
 while [ ! $ip ]
 do
-    ip=`curl -s ip.cip.cc`
+    ip=`curl ipinfo.io/ip`
     if [ ! $ip ]
     then
-        echo "$(date) ip.cip.cc error , try again 10 seconds latter..."
+        echo "$(date) get ip error , try again 10 seconds latter..."
         sleep 10
     fi
 done
