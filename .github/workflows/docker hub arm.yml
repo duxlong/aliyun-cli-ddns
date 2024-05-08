@@ -5,7 +5,7 @@ name: docker hub arm # 修改
 on:
   push:
     branches:
-      - 'master' # 修改
+      - 'arm' # 修改
 
 jobs:
   docker:
