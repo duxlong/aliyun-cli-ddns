@@ -1,6 +1,6 @@
 # 参考 https://github.com/marketplace/actions/build-and-push-docker-images
 
-name: docker hub ci # 修改
+name: docker hub arm # 修改
 
 on:
   push:
