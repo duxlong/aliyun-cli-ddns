@@ -27,6 +27,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          platforms: linux/arm/v7
+          platforms: linux/arm/v7 # 选择编译平台 linux/amd64 ; linux/arm/v7 ; linux/arm64
           push: true
           tags: duxlong/alddns # 修改
